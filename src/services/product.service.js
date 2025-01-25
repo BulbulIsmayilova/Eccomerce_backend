@@ -56,6 +56,7 @@ const list = async (filter = {}) => {
     query.where(where)
     query.limit(filter.limit || 10)
     query.skip(filter.limit * (filter.page - 1))
+    query.sort({ createdAt: -1 })
     query.populate("categories")
     query.populate("tags")
     query.populate("variants.images")

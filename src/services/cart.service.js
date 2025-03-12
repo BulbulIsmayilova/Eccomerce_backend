@@ -83,13 +83,19 @@ const deleteItem = async (userId, id) => {
 
     if (!cart) throw new BadRequestError("Your cart is empty")
 
+    let item = cart.list.find(c => c._id.toString() === id)
+
     let result = cart.list.filter(item => item._id.toString() !== id)
 
     if (result.length === cart.list.length) {
         throw new NotFoundError("Product is not found in your cart")
     }
 
+
     cart.list = result
+
+    cart.totalPrice -= item.price
+    cart.totalDiscount -= item.discount
 
     await cart.save()
 

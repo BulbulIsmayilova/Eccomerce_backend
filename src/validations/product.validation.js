@@ -26,7 +26,7 @@ const list = Joi.object({
         })
         .message("Tags ids are not valid"),
     "specs.color": Joi.string().optional(),
-    "speecs.size": Joi.string().optional(),
+    "specs.size": Joi.string().optional(),
     price: Joi.string().optional(),
     search: Joi.string().optional(),
     page: Joi.string().optional().default(1).min(1),
